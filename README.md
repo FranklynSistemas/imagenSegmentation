@@ -1,7 +1,7 @@
 
 ## Install project
 
-1. git clone 
+1. git clone https://github.com/FranklynSistemas/imagenSegmentation.git
 2. cd imageSegmentation
 3. npm i
 
