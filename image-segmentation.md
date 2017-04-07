@@ -7,7 +7,7 @@ Para la segmentación de la imagen se utilizó el Algoritmo de  [Kmeans](https:/
 
 Se itero cada pixel de la imagen tomando en cuenta que "idx" hace referencia al color Rojo, "idx+1" al color Verde y "idx+2"     al color Azul almacenándolos finalmente en un Array.
 
-``` [javaScript]
+``` [JavaScript]
     vectors[i] = [ this.bitmap.data[ idx ] , this.bitmap.data[ idx + 1 ], this.bitmap.data[ idx + 2 ]];
 ```
 
@@ -19,9 +19,9 @@ Luego con los pixeles de la imagen vectorizados se procede a aplicar el Algoritm
 * cluster : array of X elements containing the vectors of the input data
 * clusterInd : array of X integers which are the indexes of the input data
 
-*Este algoritmo agrupara los colores de cada pixel que tengan alguna coincidencia con el pixel pivote elegido aleatoriamente.*
+*Este algoritmo agrupara los valores de cada pixel que tengan alguna coincidencia con el pixel pivote elegido aleatoriamente.*
 
-``` [javaScript]
+``` [JavaScript]
     function MakeKmeans(vector, callback){
         kmeans.clusterize(vector, {k: 3},function(err,res) {
             if (err){
@@ -38,7 +38,7 @@ Luego con los pixeles de la imagen vectorizados se procede a aplicar el Algoritm
 
 En este último paso se crea la nueva imagen con las mismas dimensiones que la original y se mapeando los nuevos pixeles en los correspondientes **clusterInd** con sus correspondientes colores almacenados en **cluster**.
 
-``` [javaScript]
+``` [JavaScript]
     var newImage = new Jimp(width, height, function (err, image) {
         imagen = image;
     });
