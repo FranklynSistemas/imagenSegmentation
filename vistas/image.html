@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+	<link rel="icon" href="img/icon.png" type="image/x-icon">
+	<title> Image Segmentation </title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+  	<script src="js/jquery.min.js"></script>
+  	<script src="js/script.js"></script>
+</head>
+<body>
+	<div id="Cargando" >
+          <div id="Preloader">
+          	<h3>Cargando...</h3>
+          </div>   
+    </div>
+	<div class="container">
+		<div id="title"><h1> Image Segmentation </h1></div>
+        <div class="Form" style="width: 42%;">
+            <div id="contentImg">
+                <p style="overflow: hidden;">
+                    <img id="img" src={{img}} />
+                </p>
+            </div>
+            <div id="contentImgOri">
+               <img id="imgOriginal" style="width: 288px;margin-top: 12px;" src="http://24.media.tumblr.com/tumblr_lfp3qax6Lm1qfmtrbo1_1280.jpg" /> 
+            </div>
+        </div>
+        <div id="error"></div>
+	</div>
+
+</body>
+</html>
+

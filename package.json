@@ -1,0 +1,25 @@
+{
+  "name": "imagen",
+  "version": "1.0.0",
+  "description": "imagen segmentation",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "consolidate": "^0.14.5",
+    "express": "^4.15.2",
+    "jimp": "^0.2.27",
+    "node-kmeans": "^1.1.0",
+    "swig": "^1.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "imagen",
+    "segmentation"
+  ],
+  "author": "franklyn lombana",
+  "license": "ISC"
+}
