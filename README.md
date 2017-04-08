@@ -4,6 +4,7 @@
 1. git clone https://github.com/FranklynSistemas/imagenSegmentation.git
 2. cd imageSegmentation
 3. npm i
+4. copy kmeans.js node_modules\node-kmeans\lib or cp kmeans.js node_modules/node-kmeans/lib
 
 
 ## Use project
