@@ -69,14 +69,16 @@ var imagen,
     width,
     height;
 
+vectors[0] =  [0, 20, 255] //CenterID Rojo
+
 function segmentImg(callback){
     Jimp.read("./images/in.jpg", function (err, image) {
-    var i = 0;
+    var i = 1;
     //imagen = image;
     width =  image.bitmap.width;
     height = image.bitmap.height;
     //var imgArray = Array.prototype.slice.call(image.bitmap.data, 0);
-    image.scan(0, 0,width , height, function (x, y, idx) {
+    image.scan(0, 0, width , height, function (x, y, idx) {
             // x, y is the position of this pixel on the image 
             // idx is the position start position of this rgba tuple in the bitmap Buffer 
             // this is the image 
@@ -86,10 +88,10 @@ function segmentImg(callback){
             var alpha = this.bitmap.data[ idx + 3 ];*/
             vectors[i] = [ this.bitmap.data[ idx ] , this.bitmap.data[ idx + 1 ], this.bitmap.data[ idx + 2 ]];
             i++;
-            if(idx == ((image.bitmap.width * image.bitmap.height) * 4)  - 4 ){
+            if(i == image.bitmap.width * image.bitmap.height){
                 console.log("Finaliza Mapeo");
                 MakeKmeans(vectors, function(result) {
-                    callback(result);
+                    callback(result);    
                 });
             }       
         }); 
@@ -101,8 +103,8 @@ function MakeKmeans(vector, callback){
         if (err){
             console.error(err);
         }else{
-            CreateSegmento(res[2], function(result) {
-                callback(result);
+            CreateSegmento(res[1], function(result) {
+                callback( result );
             }); 
         }   
     });  
@@ -114,11 +116,9 @@ function CreateSegmento(Segmento, callback){
     });
     var num = Segmento.clusterInd.length;
     for (var index = 0; index < num; index++) {
-        imagen.bitmap.data[ Segmento.clusterInd[index] ] = Segmento.cluster[index][0];
-        imagen.bitmap.data[ Segmento.clusterInd[index] + 1 ] = Segmento.cluster[index][1]
-        imagen.bitmap.data[ Segmento.clusterInd[index] + 2] = Segmento.cluster[index][2]
+        imagen.bitmap.data[ Segmento.clusterInd[index + 0] ] = 255;
     }
-    imagen.resize(width*2, height*2, Jimp.RESIZE_BEZIER).write("./out/out.png");
+    imagen.resize(width*2, height*2, Jimp.RESIZE_BEZIER).greyscale().invert().write("./out/out.png");
     imagen.getBase64( Jimp.AUTO , function(err, image) {
       if(image){
         callback(image);
